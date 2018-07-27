@@ -92,7 +92,7 @@ Function Get-IPInfoFromSite {
 Function Get-PublicIPAddressInfo {
     <#
     .SYNOPSIS
-    IP.Public.API module.
+    Public.IP module.
     .DESCRIPTION
     Displays the computer's public IP info via API.
     .LINK
@@ -119,7 +119,7 @@ Function Get-PublicIPAddressInfo {
           If ($ipAPI.Status -eq "fail") {
             Write-Error -Message "Error with $IPAddressItem"
           }
-          Else {
+
             $ipAPIProperties = @{
               'City' = $ipAPI.City;
               'Country' = $ipAPI.Country;
@@ -136,7 +136,7 @@ Function Get-PublicIPAddressInfo {
               'Zip' = $ipAPI.Zip;
             }
             $Object = New-Object -TypeName PSObject -Property $ipAPIProperties
-          }
+
         }
         $ObjectFinal += $Object
       }
