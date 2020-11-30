@@ -41,12 +41,12 @@ Function Get-IPInfoFromSite {
   Switch ($Site) 
     { 
       'whatismypublicip.com' {
-        $URI = "http://www.whatismypublicip.com"
+        $URI = "http://whatismypublicip.com"
         Test-Site ($URI)
         $HTML = Invoke-WebRequest -Uri $URI
         $varIPwhatismyIPAddress = $HTML.ParsedHtml.body.getElementsByTagName('div')
         $varIPwhatismyIPAddressIP = ($varIPwhatismyIPAddress | Where-Object { $_.ID -eq "up_finished" }).textContent
-        
+        $varIPwhatismyIPAddressIP = $varIPwhatismyIPAddressIP | Select-Object -First 1
         If ($varIPwhatismyIPAddressIP -match $regExIPAddress) {
         Write-Output $varIPwhatismyIPAddressIP
         }
