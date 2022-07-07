@@ -14,7 +14,9 @@ Displays the computer's public IP.
 https://github.com/mikemadeja/PublicIPAddress/blob/master/README.md
 
 #>
-Function Test-Site  {
+
+
+function Test-Site  {
   [CmdletBinding()]
   Param (
     [string]$URI
@@ -32,7 +34,7 @@ Function Test-IPAddress {
   )
   $IPAddress -match "\b(?:\d{1,3}\.){3}\d{1,3}\b"
 }
-Function Get-IPInfoFromSite {
+function Get-IPInfoFromSite {
   [CmdletBinding()]
   param(
     [string]$Site
@@ -73,7 +75,7 @@ Function Get-IPInfoFromSite {
         }
       }
   }
-  Function Get-PublicIPAddress {
+  function Get-PublicIPAddress {
       <#
       .SYNOPSIS
       IP.Public.API module.
@@ -89,7 +91,7 @@ Function Get-IPInfoFromSite {
         )
         Get-IPInfoFromSite -Site $Site
       }
-Function Get-PublicIPAddressInfo {
+function Get-PublicIPAddressInfo {
     <#
     .SYNOPSIS
     Public.IP module.
@@ -142,6 +144,3 @@ Function Get-PublicIPAddressInfo {
       }
       Write-Output $ObjectFinal
     }
-
-Export-ModuleMember -Function Get-PublicIPAddress
-Export-ModuleMember -Function Get-PublicIPAddressInfo
